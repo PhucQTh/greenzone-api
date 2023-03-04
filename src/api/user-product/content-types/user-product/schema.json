@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_products",
+  "info": {
+    "singularName": "user-product",
+    "pluralName": "user-products",
+    "displayName": "UserProduct",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product",
+      "inversedBy": "user_product"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_products"
+    },
+    "qtt": {
+      "type": "integer"
+    },
+    "markets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::market.market",
+      "mappedBy": "owner"
+    }
+  }
+}
